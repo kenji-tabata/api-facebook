@@ -1,4 +1,4 @@
-<?php require_once __DIR__ . "/control.php" ?>
+<?php require_once __DIR__ . "/controls/control.php" ?>
 <!DOCTYPE html>
 <html>
     <head>
@@ -11,7 +11,7 @@
             <?php if (existeToken()) { ?>
                 <img src="<?php echo $userNode->getPicture()['url']; ?>" alt="foto"><br/>
                 <p>Nome do usuário: <?php echo $userNode->getName(); ?></p>
-                <p><a href="logout-action.php">Sair</a></p>
+                <p><a href="controls/logout-action.php">Sair</a></p>
             <?php } else { ?>
                 <a href="<?php echo $loginUrl; ?>"><img src="imagens/facebook.png" id="btn-login" alt="Acessar Facebook"/></a>
             <?php } ?>
