@@ -1,6 +1,6 @@
 <?php
 
-require_once __DIR__ . '/bootstrap.php';
+require_once __DIR__ . '/../bootstrap.php';
 
 // Recupera o token da sessão e adiciona no objeto.
 $fb->setDefaultAccessToken($_SESSION['facebook_access_token']);
