@@ -1,4 +1,4 @@
-<?php require_once __DIR__ . "/controls/control.php" ?>
+<?php require_once __DIR__ . "/controls/login.php" ?>
 <!DOCTYPE html>
 <html>
     <head>
