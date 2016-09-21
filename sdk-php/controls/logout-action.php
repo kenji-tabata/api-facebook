@@ -2,10 +2,14 @@
 
 require_once __DIR__ . '/../bootstrap.php';
 
-// Recupera o token da sessão e adiciona no objeto.
+// Valida e seta o token da session no objeto facebook,
 $fb->setDefaultAccessToken($_SESSION['facebook_access_token']);
-$token        = $fb->getDefaultAccessToken();
-$redirecionar = "http://www.ouse.net.br.vm01/uteis/app-facebook/sdk-php/index.php";
+
+// Recupera o token do objeto Facebook
+$token = $fb->getDefaultAccessToken();
+
+// Define a url que o usuário será redirecionado após o logout
+$redirecionar = "http://www.ouse.net.br.vm01/uteis/app-facebook/sdk-php/conteudo2.php";
 
 // Faz o logout no Facebook
 $url = 'https://www.facebook.com/logout.php?next=' . $redirecionar . '&access_token='.$token->getValue();
