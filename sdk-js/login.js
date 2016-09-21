@@ -62,7 +62,7 @@ app.status = function (response) {
 // O appId é quem identifica qual app está utilizando, no caso está configurado para a versão de teste
 window.fbAsyncInit = function () {
     FB.init({
-        appId: '1760820287509416',
+        appId: 'seu-id',
         xfbml: true,
         status: true, 
         cookie: true,
