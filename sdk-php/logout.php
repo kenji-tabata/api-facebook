@@ -1,14 +1,6 @@
 <?php
 
-session_start();
-
-require_once __DIR__ . '/vendor/autoload.php';
-
-$fb = new Facebook\Facebook([
-    'app_id' => 'seu-id',
-    'app_secret' => 'sua-secret-key',
-    'default_graph_version' => 'v2.7',
-        ]);
+require_once __DIR__ . '/bootstrap.php';
 
 // Recupera o token da sessão e adiciona no objeto.
 $fb->setDefaultAccessToken($_SESSION['facebook_access_token']);
