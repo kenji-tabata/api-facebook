@@ -9,7 +9,7 @@ $fb->setDefaultAccessToken($_SESSION['facebook_access_token']);
 $token = $fb->getDefaultAccessToken();
 
 // Define a url que o usuário será redirecionado após o logout
-$redirecionar = "http://www.ouse.net.br.vm01/uteis/app-facebook/sdk-php/conteudo2.php";
+$redirecionar = "http://192.168.0.122/uteis/app-facebook/sdk-php/conteudo2.php";
 
 // Faz o logout no Facebook
 $url = 'https://www.facebook.com/logout.php?next=' . $redirecionar . '&access_token='.$token->getValue();
