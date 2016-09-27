@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Facebook Login JavaScript Example</title>
+        <title>Facebook Login Example</title>
         <meta charset="UTF-8">
         <style>#btn-login {width: 150px;}</style>
     </head>
@@ -16,10 +16,10 @@
                 <a href="<?php echo $loginUrl; ?>"><img src="imagens/facebook.png" id="btn-login" alt="Acessar Facebook"/></a>
             <?php } ?>
         </div>
-        <h1>Conteúdo 3</h1>
+        <h1>Conteúdo 1</h1>
         <p><a href="index.php">Página inicial</a></p>
-        <p><a href="conteudo1.php">Conteúdo 1</a></p>
+        <p>Conteúdo 1</p>
         <p><a href="conteudo2.php">Conteúdo 2</a></p>
-        <p>Conteúdo 3</p>
+        <p><a href="conteudo3.php">Conteúdo 3</a></p>
     </body>
 </html>

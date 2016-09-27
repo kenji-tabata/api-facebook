@@ -1,8 +1,8 @@
-<?php require_once __DIR__ . "/controls/control.php" ?>
+<?php require_once __DIR__ . "/controls/login.php" ?>
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Facebook Login JavaScript Example</title>
+        <title>Facebook Login Example</title>
         <meta charset="UTF-8">
         <style>#btn-login {width: 150px;}</style>
     </head>
