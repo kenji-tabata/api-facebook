@@ -6,7 +6,7 @@ require_once __DIR__ . '/vendor/autoload.php';
 
 class App {
     static function getDominio() {
-        return "http://192.168.0.149/api-facebook/sdk-php";
+        return "http://192.168.0.149/api-facebook/sdk-js-php";
     }
 }
 
