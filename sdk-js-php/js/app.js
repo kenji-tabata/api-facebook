@@ -91,8 +91,12 @@ app.view_login = {
                     });
                 } else {
                     console.log(response);
-                    that.display.find('p').remove();
-                    that.display.append('<p>Você não esta autenticado no sistema!</p>');
+                    $.get("logout-callback.php", function (resp) {
+                        if (resp) {
+                            console.log(resp);
+                            window.location.href = resp;
+                        }
+                    });
                 }
             });
         });
