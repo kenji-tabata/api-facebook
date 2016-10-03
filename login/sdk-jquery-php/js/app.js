@@ -5,7 +5,7 @@ app.facebook = {
     // Adiciona a tag script que carrega o SDK JavaScript do Facebook na página
     sdkJsLoad: function () {
         var me = this;
-        $.ajaxSetup({cache: true});
+        $.ajaxSetup({cache: false});
         // Para ativar o modo debug utilize `connect.facebook.net/pt_BR/sdk/debug.js`
         $.getScript('//connect.facebook.net/pt_BR/sdk.js', function () {
             FB.init({
@@ -19,6 +19,24 @@ app.facebook = {
     },
     init: function () {
         this.sdkJsLoad();
+    },
+    connected: function () {
+        var connected = false;
+        FB.getLoginStatus(function (response) {
+            console.log(response);
+            if (response.status === 'connected') {
+                connected = true;
+            }
+        });
+        return connected;
+    },
+    logout: function () {
+        var logout = false;
+        FB.logout(function (response) {
+            logout = response;
+            console.log(logout);
+        });
+        return logout;
     }
 };
 
@@ -52,7 +70,7 @@ app.view_login = {
                     that.display.find('p').remove();
                     that.display.append('<p>Login foi cancelado!</p>');
                 }
-            });
+            },{scope: 'public_profile, email'});
             return false;
         });
     },
@@ -60,34 +78,24 @@ app.view_login = {
         var that = this;
         that.ctrl_logout.click(function () {
             // Verifica se o usuário está conectado no Facebook
-            FB.getLoginStatus(function (response) {
-                // Se estiver conectado...
-                if (response.status === 'connected') {
+            if (app.facebook.connected()) {
+                // Efetua o logout no site
+                $.get("logout-callback.php", function (resp) {
                     // Efetua o logout no Facebook
-                    FB.logout(function (response) {
-                        console.log(response);
-                        // Efetua o logout no site
-                        $.get("logout-callback.php", function (resp) {
-                            if (resp) {
-                                console.log(resp);
-                                window.location.href = resp;
-                            } else {
-                                console.log(resp);
-                                that.display.find('p').remove();
-                                that.display.append('<p>Ocorreu um erro ao sair do sistema!</p>');
-                            }
-                        });
-                    });
-                } else {
-                    console.log(response);
-                    $.get("logout-callback.php", function (resp) {
-                        if (resp) {
-                            console.log(resp);
-                            window.location.href = resp;
-                        }
-                    });
-                }
-            });
+                    app.facebook.logout();
+                    console.log(resp);
+                    // Redireciona
+                    window.location.href = resp;
+                });
+            }
+            else {
+                $.get("logout-callback.php", function (resp) {
+                    if (resp) {
+                        console.log(resp);
+                        window.location.href = resp;
+                    }
+                });
+            }
         });
     }
 };
